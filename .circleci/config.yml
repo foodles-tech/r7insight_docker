@@ -10,7 +10,7 @@ workflows:
       - docker-buildx/publish:
           name: build_deploy_docker_dev
           context: docker-publishing
-          checkout: false
+          checkout: true
           attach-workspace: true
           image: foodlestech/r7insight_docker
           tag: develop

@@ -1,14 +1,17 @@
 version: 2.1
 
 orbs:
-  docker: circleci/docker@1.2.1
+  docker-buildx: foodles/docker-buildx@0.0.1
 
 workflows:
   version: 2
   build-and-publish-docker-image:
     jobs:
-      - docker/publish:
+      - docker-buildx/publish:
+          name: build_deploy_docker_dev
           context: docker-publishing
+          checkout: false
+          attach-workspace: true
           image: foodlestech/r7insight_docker
           tag: develop
           filters:
